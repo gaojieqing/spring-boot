@@ -67,7 +67,9 @@ class SpringApplicationBannerPrinter {
 	}
 
 	public Banner print(Environment environment, Class<?> sourceClass, PrintStream out) {
+		// 获取Banner，优先加载自定义Banner(spring.banner.image.location或者spring.banner.location中定义的Banner)，没有则加载默认的Banner
 		Banner banner = getBanner(environment);
+		// 打印Banner
 		banner.printBanner(environment, sourceClass, out);
 		return new PrintedBanner(banner, sourceClass);
 	}
